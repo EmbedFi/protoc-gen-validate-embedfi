@@ -28,6 +28,7 @@ jobs:
         docker build \
           --build-arg VERSION=$IMAGE_TAG \
           -t $FULL_DOCKER_TAG \
+          .
 
   push_aws:
     name: "Push to AWS"
