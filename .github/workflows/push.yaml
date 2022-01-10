@@ -68,10 +68,10 @@ jobs:
         run: docker login --username=anything --password $BUF_TOKEN plugins.buf.build
 
       - name: ReTag
-        run: docker tag "$(basename $GITHUB_REPOSITORY):$GITHUB_SHA" "plugins.buf.build/embedfi/$(basename $GITHUB_REPOSITORY | sed -e s,protoc-gen-,,g):v0.0.0-$GITHUB_SHA"
-
-      - name: Push
-        run: docker push "plugins.buf.build/embedfi/validate-embedfi:v0.0.0-$GITHUB_SHA"
+        run: |
+          export NEW_TAG="plugins.buf.build/embedfi/$(basename $GITHUB_REPOSITORY | sed -e s,protoc-gen-,,g):v0.0.0-$GITHUB_SHA" \
+          && docker tag "$(basename $GITHUB_REPOSITORY):$GITHUB_SHA" "$NEW_TAG" \
+          && docker push $NEW_TAG
 
 
 
