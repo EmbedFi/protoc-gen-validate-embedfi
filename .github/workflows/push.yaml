@@ -1,0 +1,90 @@
+---
+# builds, pushes
+name: O4 Workflow v2
+on: [push]
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set outputs
+      id: vars
+      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+    - name: Build
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
+      run: |
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        export FULL_DOCKER_TAG=$(basename $GITHUB_REPOSITORY):$IMAGE_TAG
+        docker build \
+          --build-arg VERSION=$IMAGE_TAG \
+          -t $FULL_DOCKER_TAG \
+          .
+
+  push_aws:
+    name: "Push to AWS"
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: [build]
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: ReTag
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
+        run: docker tag \
+          $(basename $GITHUB_REPOSITORY):$IMAGE_TAG \
+          $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$IMAGE_TAG 
+
+      - name: Push to Amazon ECR
+        id: puish-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
+        run: |
+          docker push $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$IMAGE_TAG \
+          || docker pull $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$IMAGE_TAG
+
+  push_buf:
+    name: "Push to Buf Registry"
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: [build]
+    steps:
+      - name: Login
+        env: 
+          BUF_TOKEN: ${{ secrets.BUF_TOKEN }}
+        run: echo $BUF_TOKEN | docker login --username=anything --password $BUF_TOKEN plugins.buf.build
+
+      - name: ReTag
+        env:
+          IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
+        run: docker tag \
+          $(basename $GITHUB_REPOSITORY):$IMAGE_TAG \
+          plugins.buf.build/embedfi/validate-embedfi:v0.0.0-$IMAGE_TAG
+
+      - name: Push
+        run: docker push plugins.buf.build/embedfi/validate-embedfi:v0.0.0-$IMAGE_TAG
+
+
+
+
