@@ -6,7 +6,6 @@ on: [push]
 jobs:
   build:
     name: "Build"
-
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -32,6 +31,7 @@ jobs:
 
   push_aws:
     name: "Push to AWS"
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     needs: [build]
     steps:
@@ -57,6 +57,7 @@ jobs:
 
   push_buf:
     name: "Push to Buf Registry"
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     needs: [build]
     steps:
