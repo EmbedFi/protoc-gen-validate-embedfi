@@ -7,6 +7,7 @@ jobs:
   build:
     name: "Build"
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -25,13 +26,6 @@ jobs:
           --build-arg VERSION=$IMAGE_TAG \
           -t $FULL_DOCKER_TAG \
           .
-
-  push_aws:
-    name: "Push to AWS"
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: [build]
-    steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -56,12 +50,6 @@ jobs:
           docker push "$ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$GITHUB_SHA"
           || docker pull "$ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$GITHUB_SHA"
 
-  push_buf:
-    name: "Push to Buf Registry"
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: [build]
-    steps:
       - name: Login
         env: 
           BUF_TOKEN: ${{ secrets.BUF_TOKEN }}
