@@ -1,0 +1,71 @@
+# github.com/embedfi/finance v0.0.0-20220109050138-c7effce4d68c
+## explicit; go 1.14
+github.com/embedfi/finance
+# github.com/envoyproxy/protoc-gen-validate v0.4.0 => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220109045928-0239dadd412b
+## explicit; go 1.12
+github.com/envoyproxy/protoc-gen-validate/module
+github.com/envoyproxy/protoc-gen-validate/templates
+github.com/envoyproxy/protoc-gen-validate/templates/cc
+github.com/envoyproxy/protoc-gen-validate/templates/go
+github.com/envoyproxy/protoc-gen-validate/templates/goshared
+github.com/envoyproxy/protoc-gen-validate/templates/java
+github.com/envoyproxy/protoc-gen-validate/templates/shared
+github.com/envoyproxy/protoc-gen-validate/validate
+# github.com/golang/protobuf v1.5.2
+## explicit; go 1.9
+github.com/golang/protobuf/internal/gengogrpc
+github.com/golang/protobuf/proto
+github.com/golang/protobuf/protoc-gen-go
+github.com/golang/protobuf/protoc-gen-go/descriptor
+github.com/golang/protobuf/protoc-gen-go/plugin
+# github.com/iancoleman/strcase v0.2.0
+## explicit; go 1.16
+github.com/iancoleman/strcase
+# github.com/lyft/protoc-gen-star v0.6.0
+## explicit; go 1.14
+github.com/lyft/protoc-gen-star
+github.com/lyft/protoc-gen-star/lang/go
+# github.com/spf13/afero v1.6.0
+## explicit; go 1.13
+github.com/spf13/afero
+github.com/spf13/afero/mem
+# golang.org/x/text v0.3.7
+## explicit; go 1.17
+golang.org/x/text/transform
+golang.org/x/text/unicode/norm
+# google.golang.org/protobuf v1.27.1
+## explicit; go 1.9
+google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo
+google.golang.org/protobuf/compiler/protogen
+google.golang.org/protobuf/encoding/prototext
+google.golang.org/protobuf/encoding/protowire
+google.golang.org/protobuf/internal/descfmt
+google.golang.org/protobuf/internal/descopts
+google.golang.org/protobuf/internal/detrand
+google.golang.org/protobuf/internal/encoding/defval
+google.golang.org/protobuf/internal/encoding/messageset
+google.golang.org/protobuf/internal/encoding/tag
+google.golang.org/protobuf/internal/encoding/text
+google.golang.org/protobuf/internal/errors
+google.golang.org/protobuf/internal/filedesc
+google.golang.org/protobuf/internal/filetype
+google.golang.org/protobuf/internal/flags
+google.golang.org/protobuf/internal/genid
+google.golang.org/protobuf/internal/impl
+google.golang.org/protobuf/internal/order
+google.golang.org/protobuf/internal/pragma
+google.golang.org/protobuf/internal/set
+google.golang.org/protobuf/internal/strs
+google.golang.org/protobuf/internal/version
+google.golang.org/protobuf/proto
+google.golang.org/protobuf/reflect/protodesc
+google.golang.org/protobuf/reflect/protoreflect
+google.golang.org/protobuf/reflect/protoregistry
+google.golang.org/protobuf/runtime/protoiface
+google.golang.org/protobuf/runtime/protoimpl
+google.golang.org/protobuf/types/descriptorpb
+google.golang.org/protobuf/types/known/durationpb
+google.golang.org/protobuf/types/known/timestamppb
+google.golang.org/protobuf/types/known/wrapperspb
+google.golang.org/protobuf/types/pluginpb
+# github.com/envoyproxy/protoc-gen-validate => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220109045928-0239dadd412b
