@@ -1,6 +1,6 @@
 ---
 # builds, pushes
-name: O4 Workflow v2
+name: Buf Plugin Workflow
 on: [push]
 
 jobs:
@@ -11,10 +11,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Set outputs
-      id: vars
-      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-
     - name: Build
       id: build-image
       env:
@@ -24,7 +20,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        export FULL_DOCKER_TAG=$(basename $GITHUB_REPOSITORY):$IMAGE_TAG
+        export FULL_DOCKER_TAG=$(basename $GITHUB_REPOSITORY):$GITHUB_SHA
         docker build \
           --build-arg VERSION=$IMAGE_TAG \
           -t $FULL_DOCKER_TAG \
@@ -50,19 +46,17 @@ jobs:
       - name: ReTag
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
         run: docker tag \
-          $(basename $GITHUB_REPOSITORY):$IMAGE_TAG \
-          $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$IMAGE_TAG 
+          $(basename $GITHUB_REPOSITORY):$GITHUB_SHA \
+          $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$GITHUB_SHA 
 
       - name: Push to Amazon ECR
         id: puish-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
         run: |
-          docker push $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$IMAGE_TAG \
-          || docker pull $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$IMAGE_TAG
+          docker push $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$GITHUB_SHA \
+          || docker pull $ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$GITHUB_SHA
 
   push_buf:
     name: "Push to Buf Registry"
@@ -76,14 +70,12 @@ jobs:
         run: echo $BUF_TOKEN | docker login --username=anything --password $BUF_TOKEN plugins.buf.build
 
       - name: ReTag
-        env:
-          IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
         run: docker tag \
-          $(basename $GITHUB_REPOSITORY):$IMAGE_TAG \
-          plugins.buf.build/embedfi/validate-embedfi:v0.0.0-$IMAGE_TAG
+          $(basename $GITHUB_REPOSITORY):$GITHUB_SHA \
+          plugins.buf.build/embedfi/$(basename $GITHUB_REPOSITORY | sed -e s,protoc-gen-,,g):v0.0.0-$GITHUB_SHA
 
       - name: Push
-        run: docker push plugins.buf.build/embedfi/validate-embedfi:v0.0.0-$IMAGE_TAG
+        run: docker push plugins.buf.build/embedfi/validate-embedfi:v0.0.0-$GITHUB_SHA
 
 
 
