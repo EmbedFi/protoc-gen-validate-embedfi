@@ -58,7 +58,7 @@ jobs:
 
       - name: ReTag
         run: |
-          export NEW_TAG="plugins.buf.build/embedfi/$(basename $GITHUB_REPOSITORY | sed -e s,protoc-gen-,,g):v0.0.0-$GITHUB_SHA" \
+          export NEW_TAG="plugins.buf.build/embedfi/$(basename $GITHUB_REPOSITORY | sed -e s,protoc-gen-,,g):v0.0.0-$(git rev-parse --short HEAD)" \
           && docker tag "$(basename $GITHUB_REPOSITORY):$GITHUB_SHA" "$NEW_TAG" \
           && docker push $NEW_TAG
 
