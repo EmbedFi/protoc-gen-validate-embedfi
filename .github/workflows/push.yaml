@@ -51,12 +51,12 @@ jobs:
           docker push "$ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$GITHUB_SHA" \
           || docker pull "$ECR_REGISTRY/$(basename $GITHUB_REPOSITORY):$GITHUB_SHA"
 
-      - name: Login
+      - name: Login to Buf Registry
         env: 
           BUF_TOKEN: ${{ secrets.BUF_TOKEN }}
         run: docker login --username=anything --password $BUF_TOKEN plugins.buf.build
 
-      - name: ReTag
+      - name: Push to Buf Registry
         run: |
           export NEW_TAG="plugins.buf.build/embedfi/$(basename $GITHUB_REPOSITORY | sed -e s,protoc-gen-,,g):v0.0.0-$(git rev-parse --short HEAD)" \
           && docker tag "$(basename $GITHUB_REPOSITORY):$GITHUB_SHA" "$NEW_TAG" \
