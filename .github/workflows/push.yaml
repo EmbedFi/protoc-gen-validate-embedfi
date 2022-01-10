@@ -63,6 +63,7 @@ jobs:
     steps:
       - name: Login
         env: 
+          BUF_TOKEN: ${{ secrets.BUF_TOKEN }}
         run: echo $BUF_TOKEN | docker login --username=anything --password $BUF_TOKEN plugins.buf.build
 
       - name: ReTag
