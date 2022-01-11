@@ -12,5 +12,5 @@ RUN CGO_ENABLED=0 \
 
 FROM scratch
 COPY --from=builder /protoc-gen-validate-embedfi /
-ENTRYPOINT ["/protoc-gen-validate-embedf"]
+ENTRYPOINT ["/protoc-gen-validate-embedfi"]
 
