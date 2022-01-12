@@ -18,4 +18,4 @@ require (
 
 // replace github.com/embedfi/finance => ../libraries/finance
 
-replace github.com/envoyproxy/protoc-gen-validate => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220112050730-f33ca498b582
+replace github.com/envoyproxy/protoc-gen-validate => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220112052413-ccd03ebbaa8c

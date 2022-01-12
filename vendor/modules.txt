@@ -1,7 +1,7 @@
 # github.com/embedfi/finance v0.0.0-20220112042104-bba783e58073
 ## explicit; go 1.14
 github.com/embedfi/finance
-# github.com/envoyproxy/protoc-gen-validate v0.4.0 => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220112050730-f33ca498b582
+# github.com/envoyproxy/protoc-gen-validate v0.4.0 => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220112052413-ccd03ebbaa8c
 ## explicit; go 1.12
 github.com/envoyproxy/protoc-gen-validate/module
 github.com/envoyproxy/protoc-gen-validate/templates
@@ -69,4 +69,4 @@ google.golang.org/protobuf/types/known/durationpb
 google.golang.org/protobuf/types/known/timestamppb
 google.golang.org/protobuf/types/known/wrapperspb
 google.golang.org/protobuf/types/pluginpb
-# github.com/envoyproxy/protoc-gen-validate => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220112050730-f33ca498b582
+# github.com/envoyproxy/protoc-gen-validate => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220112052413-ccd03ebbaa8c
