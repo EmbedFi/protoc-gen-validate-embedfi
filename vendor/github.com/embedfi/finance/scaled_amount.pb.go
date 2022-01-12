@@ -45,10 +45,9 @@ func (x *ScaledAmount) Reset() {
 	}
 }
 
-/*
-func (x *ScaledAmount) String() string {
+func (x *ScaledAmount) ProtoString() string {
 	return protoimpl.X.MessageStringOf(x)
-}*/
+}
 
 func (*ScaledAmount) ProtoMessage() {}
 

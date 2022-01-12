@@ -2,6 +2,8 @@ github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/embedfi/finance v0.0.0-20220109050138-c7effce4d68c h1:TJAGkH0eO9IuJZ7E7czigKhel+28Hj62IPq9JI7dMJM=
 github.com/embedfi/finance v0.0.0-20220109050138-c7effce4d68c/go.mod h1:YB9K2NMHNSPz0svvEa/R9Ws3WsU+HhqgXo2mNJfG8JQ=
+github.com/embedfi/finance v0.0.0-20220112032514-f0d595628eee h1:JBIEfUjuqh15Ryquw6tV9Sq9Kk/9oqugKCA+nqqv34Y=
+github.com/embedfi/finance v0.0.0-20220112032514-f0d595628eee/go.mod h1:YB9K2NMHNSPz0svvEa/R9Ws3WsU+HhqgXo2mNJfG8JQ=
 github.com/embedfi/protoc-gen-validate v0.4.2-0.20220109045928-0239dadd412b h1:fzUJcWTFR76jb4geKofF1tISYtVMutiQfz61G3ae/CI=
 github.com/embedfi/protoc-gen-validate v0.4.2-0.20220109045928-0239dadd412b/go.mod h1:2t7qjJNvHPx8IjnBOzl9E9/baC+qXE/TeeyBRzgJDws=
 github.com/golang/protobuf v1.4.0-rc.1/go.mod h1:ceaxUfeHdC40wWswd/P6IGgMaK3YpKi5j83Wpe3EHw8=

@@ -3,7 +3,7 @@ module github.com/embedfi/protoc-gen-embedfi
 go 1.17
 
 require (
-	github.com/embedfi/finance v0.0.0-20220109050138-c7effce4d68c
+	github.com/embedfi/finance v0.0.0-20220112032514-f0d595628eee
 	github.com/envoyproxy/protoc-gen-validate v0.4.0
 	github.com/lyft/protoc-gen-star v0.6.0
 )

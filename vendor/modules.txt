@@ -1,4 +1,4 @@
-# github.com/embedfi/finance v0.0.0-20220109050138-c7effce4d68c
+# github.com/embedfi/finance v0.0.0-20220112032514-f0d595628eee
 ## explicit; go 1.14
 github.com/embedfi/finance
 # github.com/envoyproxy/protoc-gen-validate v0.4.0 => github.com/embedfi/protoc-gen-validate v0.4.2-0.20220109045928-0239dadd412b
