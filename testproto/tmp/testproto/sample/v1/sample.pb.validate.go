@@ -71,6 +71,8 @@ func (m *Transfer) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	// Scaled
+
 	if len(errors) > 0 {
 		return TransferMultiError(errors)
 	}

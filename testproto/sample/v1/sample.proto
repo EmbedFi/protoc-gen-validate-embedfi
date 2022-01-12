@@ -20,4 +20,6 @@ message Transfer {
       gt: {val: -1000000},
     }
   ];
+
+  embedfi.finance.v1.ScaledAmount not_validated = 5;
 }

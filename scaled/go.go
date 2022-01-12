@@ -3,12 +3,14 @@ package scaled
 var goTpl = `
 	// Scaled
 	{{ $f := .Field}}{{ $r := index .CustomRules ".embedfi.finance.v1.ScaledAmount" }}
+		{{ if $r }} 
 		if financeErr := {{ accessor . }}.ValidateProto({{ $r }}); financeErr != nil {
 			err := {{ err . "" }}
 			err.reason = financeErr.Error()
 			if !all { return err }
 			errors = append(errors, err)
 		}
+		{{ end }}
 `
 
 /*
