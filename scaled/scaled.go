@@ -1,10 +1,13 @@
 package scaled
 
 import (
+	"fmt"
+	"strings"
 	"text/template"
 
 	"github.com/embedfi/finance"
 	pgs "github.com/lyft/protoc-gen-star"
+	"google.golang.org/protobuf/proto"
 )
 
 type ScaledAmount struct{}
@@ -23,7 +26,17 @@ func (sv ScaledAmount) Extract(f pgs.Field) (rule interface{}, err error) {
 		return nil, nil
 	}
 
-	return rules.ScaledAmount, nil
+	asBytes, err := proto.Marshal(rules.ScaledAmount)
+	if err != nil {
+		return nil, err
+	}
+
+	bParts := make([]string, len(asBytes))
+	for idx, b := range asBytes {
+		bParts[idx] = fmt.Sprintf("%#0x", b)
+	}
+
+	return fmt.Sprintf("[]byte{%s}", strings.Join(bParts, ",")), nil
 }
 
 func (sv ScaledAmount) AddTemplates(lang string, tpl *template.Template) {

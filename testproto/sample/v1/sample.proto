@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package sample.v1;
+
+import "embedfi/finance/v1/scaled_amount.proto";
+import "embedfi/finance/v1/validate.proto";
+import "validate/validate.proto";
+
+option go_package = "github.com/embedfi/protoc-gen-validate-embedfi/testproto/sample/v1;sample_pb";
+
+message Transfer {
+
+  // Use positive values for deposits (e.g. ACH Pull) and negative values for
+  // withdrawals (e.g. ACH Push)
+  embedfi.finance.v1.ScaledAmount amount = 3 [
+    (validate.rules).message.required = true,
+    (embedfi.finance.v1.rules).scaled_amount = {
+      max_scale: {value: 2},
+      lt: {val: 1000000},
+      gt: {val: -1000000},
+    }
+  ];
+}

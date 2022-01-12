@@ -1,0 +1,13 @@
+
+version: v1
+plugins:
+  - name: go
+    out: ./tmp/
+    opt:
+      - module=github.com/embedfi/protoc-gen-validate-embedfi
+
+  - name: validate-embedfi
+    out: ./tmp/
+    opt:
+      - lang=go
+      - module=github.com/embedfi/protoc-gen-validate-embedfi
