@@ -1,6 +1,6 @@
 ---
 # builds, pushes
-name: Buf Plugin Workflow
+name: S3 Binary Workflow
 on: [push]
 
 jobs:
