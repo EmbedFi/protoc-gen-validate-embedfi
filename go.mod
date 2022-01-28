@@ -1,4 +1,4 @@
-module github.com/embedfi/protoc-gen-embedfi
+module github.com/embedfi/protoc-gen-validate-embedfi
 
 go 1.17
 
