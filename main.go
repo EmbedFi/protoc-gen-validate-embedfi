@@ -5,7 +5,7 @@ import (
 	pgs "github.com/lyft/protoc-gen-star"
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 
-	scaled "github.com/embedfi/protoc-gen-embedfi/scaled"
+	scaled "github.com/embedfi/protoc-gen-validate-embedfi/scaled"
 )
 
 func main() {
