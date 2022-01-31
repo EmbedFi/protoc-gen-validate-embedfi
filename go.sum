@@ -54,6 +54,8 @@ github.com/embedfi/protoc-gen-validate v0.4.2-0.20220112052413-ccd03ebbaa8c h1:u
 github.com/embedfi/protoc-gen-validate v0.4.2-0.20220112052413-ccd03ebbaa8c/go.mod h1:2t7qjJNvHPx8IjnBOzl9E9/baC+qXE/TeeyBRzgJDws=
 github.com/embedfi/protoc-gen-validate v0.4.2-0.20220127215102-62bef227e749 h1:G01wC5Wj0uFN9HjX6uU2R/Sb+j1FPX2LVzc4ynLRRtU=
 github.com/embedfi/protoc-gen-validate v0.4.2-0.20220127215102-62bef227e749/go.mod h1:2t7qjJNvHPx8IjnBOzl9E9/baC+qXE/TeeyBRzgJDws=
+github.com/embedfi/protoc-gen-validate v0.4.2-0.20220131003626-e3821fe5c6b0 h1:q724x/akMQBfS9om58ViuhHeOqqpudNqGWihlLLGu8g=
+github.com/embedfi/protoc-gen-validate v0.4.2-0.20220131003626-e3821fe5c6b0/go.mod h1:2t7qjJNvHPx8IjnBOzl9E9/baC+qXE/TeeyBRzgJDws=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1mIlRU8Am5FuJP05cCM98=

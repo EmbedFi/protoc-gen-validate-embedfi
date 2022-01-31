@@ -41,7 +41,12 @@ var (
 	_ = sort.Sort
 
 	{{ range $pkg, $path := enumPackages (externalEnums .) }}
-		_ = {{ $pkg }}.{{ (index (externalEnums $) 0).Parent.Name }}_{{ (index (externalEnums $) 0).Name }}(0)
+		{{ $enum := (index (externalEnums $) 0) }}
+		{{ if eq $enum.Parent.Name $enum.File.Name }}
+		_ = {{ $pkg }}.{{ $enum.Name }}(0)
+		{{ else }}
+		_ = {{ $pkg }}.{{ $enum.Parent.Name }}_{{ $enum.Name }}(0)
+		{{ end }}
 	{{ end }}
 )
 
