@@ -20,8 +20,8 @@ import (
 
 	"google.golang.org/protobuf/types/known/anypb"
 
-	{{ range $pkg, $path := enumPackages (externalEnums .) }}
-		{{ $pkg }} "{{ $path }}"
+	{{ range enumPackages (externalEnums .) }}
+		{{ .Package }} "{{ .FilePath }}"
 	{{ end }}
 )
 
@@ -40,12 +40,11 @@ var (
 	_ = anypb.Any{}
 	_ = sort.Sort
 
-	{{ range $pkg, $path := enumPackages (externalEnums .) }}
-		{{ $enum := (index (externalEnums $) 0) }}
-		{{ if eq $enum.Parent.Name $enum.File.Name }}
-		_ = {{ $pkg }}.{{ $enum.Name }}(0)
+	{{ range enumPackages (externalEnums .) }}
+		{{ if eq .FirstEnum.Parent.Name .FirstEnum.File.Name }}
+		_ = {{ .Package }}.{{ .FirstEnum.Name }}(0)
 		{{ else }}
-		_ = {{ $pkg }}.{{ $enum.Parent.Name }}_{{ $enum.Name }}(0)
+		_ = {{ .Package }}.{{ .FirstEnum.Parent.Name }}_{{ .FirstEnum.Name }}(0)
 		{{ end }}
 	{{ end }}
 )
